@@ -1,10 +1,12 @@
+# Prettygoey
+
 Prettygooey is a set of themed UI components for the [iced](https://iced.rs/) GUI library.
 
 ![Showcase](docs/img/showcase.png)
 
 ⚠️ **Prettygooey, like iced, is experimental software.** ⚠️
 
-# Getting started
+## Getting started
 
 This guide assumes you have basic knowledge of iced.
 
