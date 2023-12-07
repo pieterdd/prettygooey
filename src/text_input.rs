@@ -1,7 +1,7 @@
 use crate::{
     common::{
         BORDER_COLOR_DEFAULT, BORDER_COLOR_FOCUSED, BORDER_COLOR_HOVER, FILL_DISABLED,
-        TEXT_COLOR_DEFAULT, TEXT_COLOR_DISABLED, TEXT_COLOR_HOVER,
+        TEXT_COLOR_DEFAULT, TEXT_COLOR_DISABLED,
     },
     theme::Theme,
 };
@@ -60,7 +60,7 @@ impl text_input::StyleSheet for Theme {
     }
 
     fn selection_color(&self, _style: &Self::Style) -> Color {
-        TEXT_COLOR_HOVER
+        Color::from_rgb(0.25, 0.25, 0.25)
     }
 
     fn value_color(&self, _style: &Self::Style) -> Color {
