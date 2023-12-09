@@ -11,7 +11,7 @@ Prettygooey is a set of themed UI components for the [iced](https://iced.rs/) GU
 
 ## First time using iced?
 
-_(Disclaimer: I don't know iced that well. At the time of writing [iced's book](https://book.iced.rs/) was fairly limited, and I just wanted to make some shiny widgets.)_
+The [official iced book](https://book.iced.rs/) was fairly short at the time of writing, so my limited knowledge was pieced together from [docs.rs](https://docs.rs/iced/latest/iced/index.html) snippets, reading source code and visiting their [forums](https://discourse.iced.rs/).
 
 The simplest way to create a GUI in iced is with an [`iced::Sandbox`](https://docs.rs/iced/latest/iced/trait.Sandbox.html). It kind of behaves like a window. You'll have to implement four methods:
 
@@ -32,6 +32,10 @@ Suppose you want to create a confirmation dialog. Such a layout would probably h
     - A "Yes" button
     - A "No" button
 
+When using vanilla iced widgets, this would look something like this:
+
+![Vanilla iced example](docs/img/vanilla_iced.png)
+
 Row and column containers have some useful modifier functions:
 
 - `spacing` adds a gap between your widgets to let your layout breathe.
@@ -51,18 +55,33 @@ fn view(&self) -> Element<'_, Self::Message> {
 }
 ```
 
-![Vanilla iced example](docs/img/vanilla_iced.png)
+### Let's run this thing
+
+You've defined your UI, but it won't show up until you invoke it. In the example below, we initialize a window with mostly default settings.
+
+```rust
+MySandbox::run(Settings {
+	window: window::Settings {
+		size: (400, 450),
+		position: Position::Centered,
+		..window::Settings::default()
+	},
+	..Settings::default()
+})
+```
+
+You can find the full list of available settings [here](https://docs.rs/iced/latest/iced/settings/struct.Settings.html).
 
 ### Interactivity
 
 Many widgets allow for some kind of user interaction. Examples include your garden variety button, text input or checkbox. These interactions produce events. For a checkbox, a typical interaction plays out like this:
 
-1. Checkbox takes its current state from a variable
+1. The checkbox takes its current state from a variable
 2. User clicks the checkbox
-3. Checkbox emits an event containing the new state
+3. The checkbox emits an event containing the new state
 4. Your Sandbox's `update` function reacts to that new state by updating the variable to the new state
 
-You get to decide what the event looks like. Your `Sandbox` can designate a specific enum as its `Message` type. For example:
+You get to decide what the event looks like. Your Sandbox can designate a specific enum as its [Message type](https://docs.rs/iced/latest/iced/trait.Sandbox.html#associatedtype.Message). For example:
 
 ```rust
 #[derive(Debug, Clone)]
@@ -74,7 +93,7 @@ enum SpaceshipSandboxMessage {
 }
 ```
 
-In the case of a checkbox, you set the event as follows:
+In the case of a [checkbox](https://docs.rs/iced/latest/iced/widget/fn.checkbox.html), you set the event as follows:
 
 ```rust
 let chk_enable_boosters = checkbox(
@@ -98,7 +117,7 @@ fn update(&mut self, message: Self::Message) {
 
 ## Getting started with Prettygooey
 
-In your [`Sandbox`](https://docs.rs/iced/latest/iced/trait.Sandbox.html)'s constructor, create an instance of [`prettygooey::theme::Theme`](https://docs.rs/prettygooey/latest/prettygooey/theme/struct.Theme.html). You'll use this object to instantiate Prettygooey widgets.
+In your Sandbox's constructor, create an instance of [`prettygooey::theme::Theme`](https://docs.rs/prettygooey/latest/prettygooey/theme/struct.Theme.html). You'll use this object to instantiate Prettygooey widgets.
 
 ```rust
 fn new() -> Self {
@@ -110,7 +129,7 @@ fn new() -> Self {
 }
 ```
 
-In your `Sandbox`'s `view` function, return an instance of our primary container to apply the background.
+In your Sandbox's `view` function, return an instance of our primary container to apply the background.
 
 ```rust
 fn view(&self) -> Element<'_, Self::Message> {
@@ -135,6 +154,6 @@ self.theme
 
 ## Where to go from here
 
-For a list of available widgets with screenshots and examples, check [here](https://docs.rs/prettygooey/latest/prettygooey/theme/struct.Theme.html#implementations).
+For a list of available widgets with screenshots and examples, see the [code docs](https://docs.rs/prettygooey/latest/prettygooey/theme/struct.Theme.html#implementations).
 
 If you'd like to see more than a few loose snippets, check out the [showcase example](https://github.com/pieterdd/prettygooey/blob/main/examples/showcase/src/main.rs). It's the source code for the screenshot at the top of the README.
