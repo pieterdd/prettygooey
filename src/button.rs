@@ -1,7 +1,7 @@
 use embed_doc_image::embed_doc_image;
 use iced::{widget::button, BorderRadius, Color, Element};
 
-use crate::accents::ColorExt;
+use crate::accents::{ColorExt, PrimaryFillColorVariant};
 use crate::common::{
     BORDER_COLOR_DEFAULT, BORDER_COLOR_HOVER, FILL_DISABLED, TEXT_COLOR_DEFAULT,
     TEXT_COLOR_DISABLED, TEXT_COLOR_HOVER, TEXT_COLOR_PRESSED,
@@ -11,7 +11,11 @@ use crate::theme::Theme;
 impl Theme {
     fn _default_button_appearance(&self) -> button::Appearance {
         button::Appearance {
-            background: Some(self.accent_color.primary_fill_color().to_background()),
+            background: Some(
+                self.accent_color
+                    .primary_fill_color(PrimaryFillColorVariant::Regular)
+                    .to_background(),
+            ),
             border_radius: BorderRadius::from(5.0),
             border_width: 1.0,
             border_color: BORDER_COLOR_DEFAULT,
@@ -43,7 +47,7 @@ impl button::StyleSheet for Theme {
         button::Appearance {
             background: Some(
                 self.accent_color
-                    .hovered_primary_fill_color()
+                    .primary_fill_color(PrimaryFillColorVariant::Hovered)
                     .to_background(),
             ),
             border_color: BORDER_COLOR_HOVER,
@@ -56,7 +60,7 @@ impl button::StyleSheet for Theme {
         button::Appearance {
             background: Some(
                 self.accent_color
-                    .pressed_primary_fill_color()
+                    .primary_fill_color(PrimaryFillColorVariant::Pressed)
                     .to_background(),
             ),
             border_color: Color::from_rgba(0.4, 0.4, 0.4, 0.2),

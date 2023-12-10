@@ -1,7 +1,7 @@
 use embed_doc_image::embed_doc_image;
 use iced::{widget::checkbox, Background, BorderRadius, Color};
 
-use crate::accents::ColorExt;
+use crate::accents::{ColorExt, PrimaryFillColorVariant};
 use crate::common::{
     BORDER_COLOR_DEFAULT, BORDER_COLOR_HOVER, TEXT_COLOR_DEFAULT, TEXT_COLOR_HOVER,
 };
@@ -16,7 +16,10 @@ impl checkbox::StyleSheet for Theme {
     fn active(&self, _style: &Self::Style, is_checked: bool) -> checkbox::Appearance {
         checkbox::Appearance {
             background: match is_checked {
-                true => self.accent_color.primary_fill_color().to_background(),
+                true => self
+                    .accent_color
+                    .primary_fill_color(PrimaryFillColorVariant::Regular)
+                    .to_background(),
                 false => Background::Color(CHECKBOX_DARKER_GRAY),
             },
             border_color: BORDER_COLOR_DEFAULT,

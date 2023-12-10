@@ -4,7 +4,10 @@ use iced::{
     Element, Length, Pixels,
 };
 
-use crate::{accents::ColorExt, theme::Theme};
+use crate::{
+    accents::{ColorExt, PrimaryFillColorVariant},
+    theme::Theme,
+};
 
 impl Theme {
     /// Instantiates a specialized container to display a title, an app icon or other
@@ -46,7 +49,11 @@ impl Theme {
         let header_main = container(contents)
             .width(Length::Fill)
             .style(move |_: &_| container::Appearance {
-                background: Some(self.accent_color.primary_fill_color().to_background()),
+                background: Some(
+                    self.accent_color
+                        .primary_fill_color(PrimaryFillColorVariant::Regular)
+                        .to_background(),
+                ),
                 ..Default::default()
             })
             .padding([10, 20]);

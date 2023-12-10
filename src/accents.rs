@@ -19,6 +19,12 @@ impl ColorExt for Color {
     }
 }
 
+pub enum PrimaryFillColorVariant {
+    Regular,
+    Hovered,
+    Pressed,
+}
+
 impl AccentColor {
     pub fn primary_container_background(&self) -> Background {
         match self {
@@ -27,24 +33,20 @@ impl AccentColor {
         }
     }
 
-    pub fn primary_fill_color(&self) -> Color {
-        match self {
-            Self::Magenta => Color::from_rgb(0.27, 0.02, 0.15),
-            Self::Green => Color::from_rgb(0.03, 0.16, 0.1),
-        }
-    }
-
-    pub fn hovered_primary_fill_color(&self) -> Color {
-        match self {
-            Self::Magenta => Color::from_rgb(0.29, 0.04, 0.17),
-            Self::Green => Color::from_rgb(0.05, 0.18, 0.12),
-        }
-    }
-
-    pub fn pressed_primary_fill_color(&self) -> Color {
-        match self {
-            Self::Magenta => Color::from_rgb(0.25, 0.00, 0.13),
-            Self::Green => Color::from_rgb(0.01, 0.14, 0.08),
+    pub fn primary_fill_color(&self, variant: PrimaryFillColorVariant) -> Color {
+        match variant {
+            PrimaryFillColorVariant::Regular => match self {
+                Self::Magenta => Color::from_rgb(0.27, 0.02, 0.15),
+                Self::Green => Color::from_rgb(0.03, 0.16, 0.1),
+            },
+            PrimaryFillColorVariant::Hovered => match self {
+                Self::Magenta => Color::from_rgb(0.29, 0.04, 0.17),
+                Self::Green => Color::from_rgb(0.05, 0.18, 0.12),
+            },
+            PrimaryFillColorVariant::Pressed => match self {
+                Self::Magenta => Color::from_rgb(0.25, 0.00, 0.13),
+                Self::Green => Color::from_rgb(0.01, 0.14, 0.08),
+            },
         }
     }
 

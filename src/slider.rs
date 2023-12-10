@@ -1,6 +1,7 @@
 use embed_doc_image::embed_doc_image;
 use iced::{widget::slider, BorderRadius, Color};
 
+use crate::accents::PrimaryFillColorVariant;
 use crate::common::BORDER_COLOR_DEFAULT;
 use crate::theme::Theme;
 
@@ -8,7 +9,11 @@ impl Theme {
     fn _default_slider_appearance(&self) -> slider::Appearance {
         slider::Appearance {
             rail: slider::Rail {
-                colors: (self.accent_color.primary_fill_color(), Color::WHITE),
+                colors: (
+                    self.accent_color
+                        .primary_fill_color(PrimaryFillColorVariant::Regular),
+                    Color::WHITE,
+                ),
                 width: 12.0,
                 border_radius: BorderRadius::from(5.0),
             },
@@ -34,7 +39,11 @@ impl slider::StyleSheet for Theme {
     fn dragging(&self, _style: &Self::Style) -> slider::Appearance {
         slider::Appearance {
             rail: slider::Rail {
-                colors: (self.accent_color.pressed_primary_fill_color(), Color::WHITE),
+                colors: (
+                    self.accent_color
+                        .primary_fill_color(PrimaryFillColorVariant::Pressed),
+                    Color::WHITE,
+                ),
                 width: 12.0,
                 border_radius: BorderRadius::from(5.0),
             },
@@ -45,7 +54,11 @@ impl slider::StyleSheet for Theme {
     fn hovered(&self, _style: &Self::Style) -> slider::Appearance {
         slider::Appearance {
             rail: slider::Rail {
-                colors: (self.accent_color.hovered_primary_fill_color(), Color::WHITE),
+                colors: (
+                    self.accent_color
+                        .primary_fill_color(PrimaryFillColorVariant::Hovered),
+                    Color::WHITE,
+                ),
                 width: 12.0,
                 border_radius: BorderRadius::from(5.0),
             },
