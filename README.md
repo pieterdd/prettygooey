@@ -3,7 +3,7 @@
 [![Crates.io](https://img.shields.io/crates/v/prettygooey.svg)](https://crates.io/crates/prettygooey)
 [![docs.rs](https://img.shields.io/docsrs/prettygooey/latest)](https://docs.rs/prettygooey/latest/prettygooey/theme/struct.Theme.html)
 
-Prettygooey is a set of themed UI components for the [iced](https://iced.rs/) GUI library.
+Prettygooey is a set of themed UI components for the [iced](https://iced.rs/) GUI library. Works on Windows, Linux and Mac.
 
 ![Showcase](docs/img/showcase.png)
 
@@ -157,3 +157,9 @@ self.theme
 For a list of available widgets with screenshots and examples, see the [code docs](https://docs.rs/prettygooey/latest/prettygooey/theme/struct.Theme.html#implementations).
 
 If you'd like to see more than a few loose snippets, check out the [showcase example](https://github.com/pieterdd/prettygooey/blob/main/examples/showcase/src/main.rs). It's the source code for the screenshot at the top of the README.
+
+## Not quite what you're looking for?
+
+Pop! OS's [libcosmic](https://github.com/pop-os/libcosmic) implements a much wider range of iced widgets and is backed by device manufacturer System76. On the other hand, libcosmic's learning curve may be a bit steeper. The library is primarily intended for use by applications that are native to the Cosmic desktop environment.
+
+That said, I'd still check it out and make up your own mind.
