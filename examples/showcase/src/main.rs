@@ -9,7 +9,7 @@ use iced::window::{self, Position};
 use iced::{Element, Length, Pixels, Sandbox, Settings};
 
 fn main() -> iced::Result {
-    let target_size = (400, 480);
+    let target_size = (400, 520);
     ShowcaseSandbox::run(Settings {
         window: window::Settings {
             min_size: Some(target_size),
