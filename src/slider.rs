@@ -8,11 +8,7 @@ impl Theme {
     fn _default_slider_appearance(&self) -> slider::Appearance {
         slider::Appearance {
             rail: slider::Rail {
-                colors: (
-                    self.accent_color
-                        .primary_fill_color(PrimaryFillColorVariant::Regular),
-                    Color::WHITE,
-                ),
+                colors: (self.accent_color.secondary_fill_color(), Color::WHITE),
                 width: 12.0,
                 border_radius: BorderRadius::from(5.0),
             },
