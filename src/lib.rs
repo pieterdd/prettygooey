@@ -10,5 +10,6 @@ mod checkbox;
 mod header;
 mod primary_container;
 mod radio_group;
+mod slider;
 mod text;
 mod text_input;

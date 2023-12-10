@@ -1,6 +1,7 @@
 use embed_doc_image::embed_doc_image;
 use iced::{widget::button, BorderRadius, Color, Element};
 
+use crate::accents::ColorExt;
 use crate::common::{
     BORDER_COLOR_DEFAULT, BORDER_COLOR_HOVER, FILL_DISABLED, TEXT_COLOR_DEFAULT,
     TEXT_COLOR_DISABLED, TEXT_COLOR_HOVER, TEXT_COLOR_PRESSED,
@@ -8,9 +9,9 @@ use crate::common::{
 use crate::theme::Theme;
 
 impl Theme {
-    fn _default_appearance(&self) -> button::Appearance {
+    fn _default_button_appearance(&self) -> button::Appearance {
         button::Appearance {
-            background: Some(self.accent_color.primary_fill_color()),
+            background: Some(self.accent_color.primary_fill_color().to_background()),
             border_radius: BorderRadius::from(5.0),
             border_width: 1.0,
             border_color: BORDER_COLOR_DEFAULT,
@@ -25,7 +26,7 @@ impl button::StyleSheet for Theme {
 
     fn active(&self, _style: &Self::Style) -> button::Appearance {
         button::Appearance {
-            ..self._default_appearance()
+            ..self._default_button_appearance()
         }
     }
 
@@ -34,25 +35,33 @@ impl button::StyleSheet for Theme {
             background: Some(FILL_DISABLED),
             border_color: Color::from_rgba(0.2, 0.2, 0.2, 0.5),
             text_color: TEXT_COLOR_DISABLED,
-            ..self._default_appearance()
+            ..self._default_button_appearance()
         }
     }
 
     fn hovered(&self, _style: &Self::Style) -> button::Appearance {
         button::Appearance {
-            background: Some(self.accent_color.hovered_primary_fill_color()),
+            background: Some(
+                self.accent_color
+                    .hovered_primary_fill_color()
+                    .to_background(),
+            ),
             border_color: BORDER_COLOR_HOVER,
             text_color: TEXT_COLOR_HOVER,
-            ..self._default_appearance()
+            ..self._default_button_appearance()
         }
     }
 
     fn pressed(&self, _style: &Self::Style) -> button::Appearance {
         button::Appearance {
-            background: Some(self.accent_color.pressed_primary_fill_color()),
+            background: Some(
+                self.accent_color
+                    .pressed_primary_fill_color()
+                    .to_background(),
+            ),
             border_color: Color::from_rgba(0.4, 0.4, 0.4, 0.2),
             text_color: TEXT_COLOR_PRESSED,
-            ..self._default_appearance()
+            ..self._default_button_appearance()
         }
     }
 }

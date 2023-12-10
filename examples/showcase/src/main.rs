@@ -9,7 +9,7 @@ use iced::window::{self, Position};
 use iced::{Element, Length, Pixels, Sandbox, Settings};
 
 fn main() -> iced::Result {
-    let target_size = (400, 450);
+    let target_size = (400, 480);
     ShowcaseSandbox::run(Settings {
         window: window::Settings {
             min_size: Some(target_size),
@@ -27,12 +27,14 @@ enum ShowcaseSandboxMessage {
     ButtonPressed,
     RadioButtonChanged(AccentColor),
     TextInputChanged(String),
+    SliderChanged(u32),
 }
 
 struct ShowcaseSandbox {
     inputs_enabled: bool,
     text_input_value: String,
     button_pressed: bool,
+    power_level: u32,
     theme: Theme,
 }
 
@@ -44,6 +46,7 @@ impl Sandbox for ShowcaseSandbox {
             inputs_enabled: true,
             text_input_value: String::from(""),
             button_pressed: false,
+            power_level: 9001,
             theme: Theme {
                 accent_color: AccentColor::Magenta,
             },
@@ -92,7 +95,7 @@ impl Sandbox for ShowcaseSandbox {
             }),
             self.theme.text(self.theme.accent_color),
             self.theme.text(&self.text_input_value),
-            self.theme.text("Over 9,000"),
+            self.theme.text(&self.power_level),
         ]
         .spacing(2);
 
@@ -117,6 +120,8 @@ impl Sandbox for ShowcaseSandbox {
                 self.theme
                     .radio_group(self.theme.accent_color, Self::Message::RadioButtonChanged),
                 button,
+                self.theme
+                    .slider(8995..=9005, self.power_level, Self::Message::SliderChanged),
             ]
             .spacing(20),
         )
@@ -143,6 +148,9 @@ impl Sandbox for ShowcaseSandbox {
             }
             Self::Message::TextInputChanged(value) => {
                 self.text_input_value = value;
+            }
+            Self::Message::SliderChanged(value) => {
+                self.power_level = value;
             }
         }
     }
