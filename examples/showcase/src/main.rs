@@ -76,9 +76,7 @@ impl Sandbox for ShowcaseSandbox {
             self.theme
                 .text("Button clicked")
                 .variant(TextVariant::Dimmed),
-            self.theme
-                .text("Theme selection")
-                .variant(TextVariant::Dimmed),
+            self.theme.text("Accent color").variant(TextVariant::Dimmed),
             self.theme.text("Text input").variant(TextVariant::Dimmed),
             self.theme.text("Power level").variant(TextVariant::Dimmed),
         ]
