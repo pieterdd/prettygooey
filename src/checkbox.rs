@@ -20,7 +20,14 @@ impl checkbox::StyleSheet for Theme {
                     .to_background(),
                 false => Background::Color(CHECKBOX_DARKER_GRAY),
             },
-            border_color: self.accent_color.border_color(BorderColorVariant::Regular),
+            border_color: match is_checked {
+                true => self
+                    .accent_color
+                    .border_color(BorderColorVariant::RegularColored),
+                false => self
+                    .accent_color
+                    .border_color(BorderColorVariant::RegularGrayscale),
+            },
             icon_color: Color::WHITE,
             border_radius: BorderRadius::from(5.0),
             border_width: 1.0,
@@ -34,7 +41,14 @@ impl checkbox::StyleSheet for Theme {
                 true => self.accent_color.secondary_fill_color().to_background(),
                 false => Background::Color(CHECKBOX_LIGHTER_GRAY),
             },
-            border_color: self.accent_color.border_color(BorderColorVariant::Hovered),
+            border_color: match is_checked {
+                true => self
+                    .accent_color
+                    .border_color(BorderColorVariant::HoveredColored),
+                false => self
+                    .accent_color
+                    .border_color(BorderColorVariant::HoveredGrayscale),
+            },
             icon_color: Color::WHITE,
             border_radius: BorderRadius::from(5.0),
             border_width: 1.0,

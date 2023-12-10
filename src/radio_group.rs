@@ -24,7 +24,14 @@ impl radio::StyleSheet for Theme {
                     .to_background(),
                 false => Background::Color(RADIO_DARKER_GRAY),
             },
-            border_color: self.accent_color.border_color(BorderColorVariant::Regular),
+            border_color: match is_checked {
+                true => self
+                    .accent_color
+                    .border_color(BorderColorVariant::RegularColored),
+                false => self
+                    .accent_color
+                    .border_color(BorderColorVariant::RegularGrayscale),
+            },
             dot_color: Color::WHITE,
             border_width: 1.0,
             text_color: Some(TEXT_COLOR_DEFAULT),
@@ -37,7 +44,14 @@ impl radio::StyleSheet for Theme {
                 true => self.accent_color.secondary_fill_color().to_background(),
                 false => Background::Color(RADIO_LIGHTER_GRAY),
             },
-            border_color: self.accent_color.border_color(BorderColorVariant::Hovered),
+            border_color: match is_checked {
+                true => self
+                    .accent_color
+                    .border_color(BorderColorVariant::HoveredColored),
+                false => self
+                    .accent_color
+                    .border_color(BorderColorVariant::HoveredGrayscale),
+            },
             dot_color: Color::WHITE,
             border_width: 1.0,
             text_color: Some(TEXT_COLOR_HOVER),

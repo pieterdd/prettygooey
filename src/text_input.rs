@@ -15,7 +15,9 @@ impl Theme {
             background: iced::Background::Color(Color::from_rgb(0.05, 0.05, 0.05)),
             border_radius: BorderRadius::from(5.0),
             border_width: 1.0,
-            border_color: self.accent_color.border_color(BorderColorVariant::Regular),
+            border_color: self
+                .accent_color
+                .border_color(BorderColorVariant::RegularGrayscale),
             icon_color: Color::WHITE,
         }
     }
@@ -50,7 +52,9 @@ impl text_input::StyleSheet for Theme {
 
     fn hovered(&self, _style: &Self::Style) -> text_input::Appearance {
         text_input::Appearance {
-            border_color: self.accent_color.border_color(BorderColorVariant::Hovered),
+            border_color: self
+                .accent_color
+                .border_color(BorderColorVariant::HoveredGrayscale),
             ..self._default_text_input_appearance()
         }
     }

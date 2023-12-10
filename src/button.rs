@@ -17,7 +17,9 @@ impl Theme {
             ),
             border_radius: BorderRadius::from(5.0),
             border_width: 1.0,
-            border_color: self.accent_color.border_color(BorderColorVariant::Regular),
+            border_color: self
+                .accent_color
+                .border_color(BorderColorVariant::RegularColored),
             text_color: TEXT_COLOR_DEFAULT,
             ..Default::default()
         }
@@ -49,7 +51,9 @@ impl button::StyleSheet for Theme {
                     .primary_fill_color(PrimaryFillColorVariant::Hovered)
                     .to_background(),
             ),
-            border_color: self.accent_color.border_color(BorderColorVariant::Hovered),
+            border_color: self
+                .accent_color
+                .border_color(BorderColorVariant::HoveredColored),
             text_color: TEXT_COLOR_HOVER,
             ..self._default_button_appearance()
         }
@@ -62,7 +66,9 @@ impl button::StyleSheet for Theme {
                     .primary_fill_color(PrimaryFillColorVariant::Pressed)
                     .to_background(),
             ),
-            border_color: Color::from_rgba(0.4, 0.4, 0.4, 0.2),
+            border_color: self
+                .accent_color
+                .border_color(BorderColorVariant::RegularColored),
             text_color: TEXT_COLOR_PRESSED,
             ..self._default_button_appearance()
         }

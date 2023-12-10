@@ -26,8 +26,10 @@ pub enum PrimaryFillColorVariant {
 }
 
 pub enum BorderColorVariant {
-    Regular,
-    Hovered,
+    RegularGrayscale,
+    RegularColored,
+    HoveredGrayscale,
+    HoveredColored,
     Focused,
 }
 
@@ -35,7 +37,7 @@ impl AccentColor {
     pub fn primary_container_background(&self) -> Background {
         match self {
             Self::Magenta => Background::Color(Color::from_rgb(0.12, 0.11, 0.13)),
-            Self::Green => Background::Color(Color::from_rgb(0.12, 0.11, 0.13)),
+            Self::Green => Background::Color(Color::from_rgb(0.11, 0.11, 0.12)),
         }
     }
 
@@ -59,15 +61,30 @@ impl AccentColor {
     pub fn secondary_fill_color(&self) -> Color {
         match self {
             Self::Magenta => Color::from_rgb(0.34, 0.09, 0.2),
-            Self::Green => Color::from_rgb(0.10, 0.23, 0.15),
+            Self::Green => Color::from_rgb(0.08, 0.21, 0.15),
         }
     }
 
     pub fn border_color(&self, variant: BorderColorVariant) -> Color {
         match variant {
-            BorderColorVariant::Regular => Color::from_rgb(0.23, 0.23, 0.23),
-            BorderColorVariant::Hovered => Color::from_rgba(0.3, 0.3, 0.3, 0.6),
-            BorderColorVariant::Focused => Color::from_rgba(0.35, 0.35, 0.35, 0.6),
+            BorderColorVariant::RegularGrayscale => match self {
+                _ => Color::from_rgb(0.23, 0.23, 0.23),
+            },
+            BorderColorVariant::RegularColored => match self {
+                Self::Magenta => Color::from_rgb(0.34, 0.09, 0.2),
+                Self::Green => Color::from_rgb(0.1, 0.23, 0.15),
+            },
+            BorderColorVariant::HoveredGrayscale => match self {
+                _ => Color::from_rgba(0.3, 0.3, 0.3, 0.6),
+            },
+            BorderColorVariant::HoveredColored => match self {
+                Self::Magenta => Color::from_rgb(0.36, 0.11, 0.22),
+                Self::Green => Color::from_rgb(0.12, 0.25, 0.17),
+            },
+            BorderColorVariant::Focused => match self {
+                Self::Magenta => Color::from_rgb(0.40, 0.15, 0.26),
+                Self::Green => Color::from_rgb(0.16, 0.29, 0.21),
+            },
         }
     }
 }

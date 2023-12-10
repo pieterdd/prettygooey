@@ -17,10 +17,12 @@ impl Theme {
                 border_radius: BorderRadius::from(5.0),
             },
             handle: slider::Handle {
-                shape: slider::HandleShape::Circle { radius: 12.0 },
+                shape: slider::HandleShape::Circle { radius: 10.0 },
                 color: Color::WHITE,
                 border_width: 1.0,
-                border_color: self.accent_color.border_color(BorderColorVariant::Regular),
+                border_color: self
+                    .accent_color
+                    .border_color(BorderColorVariant::RegularGrayscale),
             },
         }
     }
