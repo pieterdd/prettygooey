@@ -1,10 +1,9 @@
 use embed_doc_image::embed_doc_image;
 use iced::{widget::button, BorderRadius, Color, Element};
 
-use crate::accents::{ColorExt, PrimaryFillColorVariant};
+use crate::accents::{BorderColorVariant, ColorExt, PrimaryFillColorVariant};
 use crate::common::{
-    BORDER_COLOR_DEFAULT, BORDER_COLOR_HOVER, FILL_DISABLED, TEXT_COLOR_DEFAULT,
-    TEXT_COLOR_DISABLED, TEXT_COLOR_HOVER, TEXT_COLOR_PRESSED,
+    FILL_DISABLED, TEXT_COLOR_DEFAULT, TEXT_COLOR_DISABLED, TEXT_COLOR_HOVER, TEXT_COLOR_PRESSED,
 };
 use crate::theme::Theme;
 
@@ -18,7 +17,7 @@ impl Theme {
             ),
             border_radius: BorderRadius::from(5.0),
             border_width: 1.0,
-            border_color: BORDER_COLOR_DEFAULT,
+            border_color: self.accent_color.border_color(BorderColorVariant::Regular),
             text_color: TEXT_COLOR_DEFAULT,
             ..Default::default()
         }
@@ -50,7 +49,7 @@ impl button::StyleSheet for Theme {
                     .primary_fill_color(PrimaryFillColorVariant::Hovered)
                     .to_background(),
             ),
-            border_color: BORDER_COLOR_HOVER,
+            border_color: self.accent_color.border_color(BorderColorVariant::Hovered),
             text_color: TEXT_COLOR_HOVER,
             ..self._default_button_appearance()
         }

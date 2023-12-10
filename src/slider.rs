@@ -1,8 +1,7 @@
 use embed_doc_image::embed_doc_image;
 use iced::{widget::slider, BorderRadius, Color};
 
-use crate::accents::PrimaryFillColorVariant;
-use crate::common::BORDER_COLOR_DEFAULT;
+use crate::accents::{BorderColorVariant, PrimaryFillColorVariant};
 use crate::theme::Theme;
 
 impl Theme {
@@ -21,7 +20,7 @@ impl Theme {
                 shape: slider::HandleShape::Circle { radius: 12.0 },
                 color: Color::WHITE,
                 border_width: 1.0,
-                border_color: BORDER_COLOR_DEFAULT,
+                border_color: self.accent_color.border_color(BorderColorVariant::Regular),
             },
         }
     }

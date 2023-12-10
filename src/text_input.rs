@@ -1,8 +1,6 @@
 use crate::{
-    common::{
-        BORDER_COLOR_DEFAULT, BORDER_COLOR_FOCUSED, BORDER_COLOR_HOVER, FILL_DISABLED,
-        TEXT_COLOR_DEFAULT, TEXT_COLOR_DISABLED,
-    },
+    accents::BorderColorVariant,
+    common::{FILL_DISABLED, TEXT_COLOR_DEFAULT, TEXT_COLOR_DISABLED},
     theme::Theme,
 };
 use embed_doc_image::embed_doc_image;
@@ -11,13 +9,15 @@ use iced::{
     BorderRadius, Color,
 };
 
-fn default_text_input_appearance() -> text_input::Appearance {
-    text_input::Appearance {
-        background: iced::Background::Color(Color::from_rgb(0.05, 0.05, 0.05)),
-        border_radius: BorderRadius::from(5.0),
-        border_width: 1.0,
-        border_color: BORDER_COLOR_DEFAULT,
-        icon_color: Color::WHITE,
+impl Theme {
+    fn _default_text_input_appearance(&self) -> text_input::Appearance {
+        text_input::Appearance {
+            background: iced::Background::Color(Color::from_rgb(0.05, 0.05, 0.05)),
+            border_radius: BorderRadius::from(5.0),
+            border_width: 1.0,
+            border_color: self.accent_color.border_color(BorderColorVariant::Regular),
+            icon_color: Color::WHITE,
+        }
     }
 }
 
@@ -26,14 +26,14 @@ impl text_input::StyleSheet for Theme {
 
     fn active(&self, _style: &Self::Style) -> text_input::Appearance {
         text_input::Appearance {
-            ..default_text_input_appearance()
+            ..self._default_text_input_appearance()
         }
     }
 
     fn disabled(&self, _style: &Self::Style) -> text_input::Appearance {
         text_input::Appearance {
             background: FILL_DISABLED,
-            ..default_text_input_appearance()
+            ..self._default_text_input_appearance()
         }
     }
 
@@ -43,15 +43,15 @@ impl text_input::StyleSheet for Theme {
 
     fn focused(&self, _style: &Self::Style) -> text_input::Appearance {
         text_input::Appearance {
-            border_color: BORDER_COLOR_FOCUSED,
-            ..default_text_input_appearance()
+            border_color: self.accent_color.border_color(BorderColorVariant::Focused),
+            ..self._default_text_input_appearance()
         }
     }
 
     fn hovered(&self, _style: &Self::Style) -> text_input::Appearance {
         text_input::Appearance {
-            border_color: BORDER_COLOR_HOVER,
-            ..default_text_input_appearance()
+            border_color: self.accent_color.border_color(BorderColorVariant::Hovered),
+            ..self._default_text_input_appearance()
         }
     }
 

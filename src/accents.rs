@@ -25,6 +25,12 @@ pub enum PrimaryFillColorVariant {
     Pressed,
 }
 
+pub enum BorderColorVariant {
+    Regular,
+    Hovered,
+    Focused,
+}
+
 impl AccentColor {
     pub fn primary_container_background(&self) -> Background {
         match self {
@@ -54,6 +60,14 @@ impl AccentColor {
         match self {
             Self::Magenta => Color::from_rgb(0.34, 0.09, 0.2),
             Self::Green => Color::from_rgb(0.10, 0.23, 0.15),
+        }
+    }
+
+    pub fn border_color(&self, variant: BorderColorVariant) -> Color {
+        match variant {
+            BorderColorVariant::Regular => Color::from_rgb(0.23, 0.23, 0.23),
+            BorderColorVariant::Hovered => Color::from_rgba(0.3, 0.3, 0.3, 0.6),
+            BorderColorVariant::Focused => Color::from_rgba(0.35, 0.35, 0.35, 0.6),
         }
     }
 }

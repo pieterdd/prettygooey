@@ -5,10 +5,8 @@ use iced::widget::{container, radio, Column, Container};
 use iced::{Background, Color, Pixels};
 use strum::IntoEnumIterator;
 
-use crate::accents::{ColorExt, PrimaryFillColorVariant};
-use crate::common::{
-    BORDER_COLOR_DEFAULT, BORDER_COLOR_HOVER, TEXT_COLOR_DEFAULT, TEXT_COLOR_HOVER,
-};
+use crate::accents::{BorderColorVariant, ColorExt, PrimaryFillColorVariant};
+use crate::common::{TEXT_COLOR_DEFAULT, TEXT_COLOR_HOVER};
 use crate::theme::Theme;
 
 static RADIO_DARKER_GRAY: Color = Color::from_rgb(0.11, 0.11, 0.11);
@@ -26,7 +24,7 @@ impl radio::StyleSheet for Theme {
                     .to_background(),
                 false => Background::Color(RADIO_DARKER_GRAY),
             },
-            border_color: BORDER_COLOR_DEFAULT,
+            border_color: self.accent_color.border_color(BorderColorVariant::Regular),
             dot_color: Color::WHITE,
             border_width: 1.0,
             text_color: Some(TEXT_COLOR_DEFAULT),
@@ -39,7 +37,7 @@ impl radio::StyleSheet for Theme {
                 true => self.accent_color.secondary_fill_color().to_background(),
                 false => Background::Color(RADIO_LIGHTER_GRAY),
             },
-            border_color: BORDER_COLOR_HOVER,
+            border_color: self.accent_color.border_color(BorderColorVariant::Hovered),
             dot_color: Color::WHITE,
             border_width: 1.0,
             text_color: Some(TEXT_COLOR_HOVER),
