@@ -15,7 +15,7 @@ The [official iced book](https://book.iced.rs/) was fairly short at the time of 
 
 The simplest way to create a GUI in iced is with an [`iced::Sandbox`](https://docs.rs/iced/latest/iced/trait.Sandbox.html). It kind of behaves like a window. You'll have to implement four methods:
 
-- `new`: intialize your default state here
+- `new`: prepares your initial state
 - `title`: controls the title of the window
 - `update`: more on this later
 - `view`: renders your widgets
