@@ -73,17 +73,13 @@ impl AccentColor {
 
     pub fn border_color(&self, variant: BorderColorVariant) -> Color {
         match variant {
-            BorderColorVariant::RegularGrayscale => match self {
-                _ => Color::from_rgb(0.23, 0.23, 0.23),
-            },
+            BorderColorVariant::RegularGrayscale => Color::from_rgb(0.23, 0.23, 0.23),
             BorderColorVariant::RegularColored => match self {
                 Self::Magenta => Color::from_rgb(0.34, 0.09, 0.2),
                 Self::Green => Color::from_rgb(0.1, 0.23, 0.15),
                 Self::Cyan => Color::from_rgb(0.16, 0.31, 0.28),
             },
-            BorderColorVariant::HoveredGrayscale => match self {
-                _ => Color::from_rgba(0.3, 0.3, 0.3, 0.6),
-            },
+            BorderColorVariant::HoveredGrayscale => Color::from_rgba(0.3, 0.3, 0.3, 0.6),
             BorderColorVariant::HoveredColored => match self {
                 Self::Magenta => Color::from_rgb(0.36, 0.11, 0.22),
                 Self::Green => Color::from_rgb(0.12, 0.25, 0.17),
