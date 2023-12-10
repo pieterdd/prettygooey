@@ -44,7 +44,7 @@ impl Sandbox for ShowcaseSandbox {
     fn new() -> Self {
         Self {
             inputs_enabled: true,
-            text_input_value: String::from(""),
+            text_input_value: String::from("I am text"),
             button_pressed: false,
             power_level: 9001,
             theme: Theme {
