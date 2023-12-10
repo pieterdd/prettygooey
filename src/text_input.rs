@@ -106,6 +106,6 @@ impl Theme {
     ) -> TextInput<'a, MessageType> {
         text_input(placeholder, label)
             .padding([10, 15])
-            .style(iced::theme::TextInput::Custom(Box::new(self.clone())))
+            .style(iced::theme::TextInput::Custom(Box::new(*self)))
     }
 }

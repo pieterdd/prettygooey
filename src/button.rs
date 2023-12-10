@@ -96,6 +96,6 @@ impl Theme {
     pub fn button<'a, B>(&self, content: impl Into<Element<'a, B>>) -> iced::widget::Button<'a, B> {
         button(content)
             .padding([10.0, 20.0])
-            .style(iced::theme::Button::Custom(Box::new(self.clone())))
+            .style(iced::theme::Button::Custom(Box::new(*self)))
     }
 }

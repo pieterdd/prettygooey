@@ -15,7 +15,7 @@ pub trait ColorExt {
 
 impl ColorExt for Color {
     fn to_background(&self) -> Background {
-        Background::Color(self.clone())
+        Background::Color(*self)
     }
 }
 

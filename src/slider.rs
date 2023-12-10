@@ -103,6 +103,6 @@ impl Theme {
         T: Copy + From<u8> + std::cmp::PartialOrd,
         Message: Clone,
     {
-        slider(range, value, on_change).style(iced::theme::Slider::Custom(Box::new(self.clone())))
+        slider(range, value, on_change).style(iced::theme::Slider::Custom(Box::new(*self)))
     }
 }

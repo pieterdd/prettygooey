@@ -85,6 +85,6 @@ impl Theme {
     ) -> iced::widget::Checkbox<'a, Message> {
         checkbox(label, is_checked, f)
             .spacing(8)
-            .style(iced::theme::Checkbox::Custom(Box::new(self.clone())))
+            .style(iced::theme::Checkbox::Custom(Box::new(*self)))
     }
 }

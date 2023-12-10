@@ -104,12 +104,12 @@ impl Theme {
                     radio::<MessageType, _, ChoiceType>(
                         format!("{}", variant),
                         variant,
-                        Some(choice.clone()),
-                        f.clone(),
+                        Some(choice),
+                        f,
                     )
                     .size(Pixels(20.0))
                     .spacing(8)
-                    .style(iced::theme::Radio::Custom(Box::new(self.clone()))),
+                    .style(iced::theme::Radio::Custom(Box::new(self))),
                 )
                 .spacing(10);
         }
