@@ -55,6 +55,10 @@ impl Theme {
     /// It ensures Prettygooey can iterate over the variants of the enum you
     /// pass to the radio group.
     ///
+    /// Radio groups are always enabled. A disabled state is
+    /// [unavailable](https://github.com/iced-rs/iced/issues/1066)
+    /// due to limitations of [`iced::widget::radio::Radio`].
+    ///
     /// ![radio group][radio_group]
     /// ```
     /// use prettygooey::accents::AccentColor;

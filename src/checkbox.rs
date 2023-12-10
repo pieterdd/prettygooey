@@ -49,6 +49,10 @@ impl Theme {
     /// changes, it will emit an event defined by you. You can hook into this event
     /// via the Sandbox's update function, and update the variable accordingly.
     ///
+    /// A checkbox is always enabled. Due to limitations of
+    /// [`iced::widget::checkbox::Checkbox`], a disabled state is currently
+    /// [unavailable](https://github.com/iced-rs/iced/pull/2109).
+    ///
     /// ![Checkbox][checkbox]
     /// ```
     /// use prettygooey::accents::AccentColor;

@@ -57,8 +57,9 @@ impl slider::StyleSheet for Theme {
 impl Theme {
     /// Instantiates a slider widget.
     ///
-    /// It is enabled by default. Due to limitations of [`iced::widget::slider::Slider`],
-    /// a disabled state is not supported.
+    /// A slider is always enabled. Due to limitations of [`iced::widget::slider::Slider`],
+    /// a disabled state is currently
+    /// [not available](https://github.com/iced-rs/iced/issues/1066).
     ///
     /// ![Slider][slider]
     /// ```
