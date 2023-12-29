@@ -1,3 +1,5 @@
+_This library has migrated to the Floem GUI framework and is no longer being maintained. Feel free to check out [Floem UI Kit](https://github.com/pieterdd/floem-ui-kit)._
+
 # Prettygoey
 
 [![Crates.io](https://img.shields.io/crates/v/prettygooey.svg)](https://crates.io/crates/prettygooey)
